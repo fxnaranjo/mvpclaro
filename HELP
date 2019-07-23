@@ -1,0 +1,11 @@
+oc cluster up --skip-registry-check=true
+source <(oc completion bash)
+source <(kubectl completion bash)
+
+oc new-project marketplace --display-name=ClaroMarketPlace
+
+
+
+docker build -t claromvp/marketplace:1.0 .
+docker tag claromvp/marketplace:1.0 fxnaranjom/claromarketplace:1.0
+docker push fxnaranjom/claromarketplace:1.0
