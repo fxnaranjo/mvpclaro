@@ -2,10 +2,26 @@ oc cluster up --skip-registry-check=true
 source <(oc completion bash)
 source <(kubectl completion bash)
 
-oc new-project marketplace --display-name=ClaroMarketPlace
+oc new-project marketplace --display-name=ClaroMarketPlace  ----> CREATE NEW PROJECT
 
 
 
 docker build -t claromvp/marketplace:1.0 .
 docker tag claromvp/marketplace:1.0 fxnaranjom/claromarketplace:1.0
 docker push fxnaranjom/claromarketplace:1.0
+
+
+************************* CREATE A SERVICE ACCOUNT TOKEN FOR THE PROJECT THAT CAN BE USED AS TOKEN  **************************
+
+oc login -u system:admin
+
+oc project marketplace2
+oc create serviceaccount robot
+oc policy add-role-to-user admin system:serviceaccount:marketplace2:robot
+oc serviceaccounts get-token robot
+
+
+
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtYXJrZXRwbGFjZTIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlY3JldC5uYW1lIjoicm9ib3QtdG9rZW4tenFoNzUiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoicm9ib3QiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI4OGQyZThjYi1hZjEwLTExZTktOGFmYS0wMDBjMjlhNGFmZTIiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6bWFya2V0cGxhY2UyOnJvYm90In0.HsILbxFnG5I4xKur_aLhbyFRC8v_SwFvTbJltxBMRETFUBfZ9bN9R492xrfKPY4R-L0Usvycc5dNijGgjYUogkztNUMivZtyphAtjpwu8zSujPS5qR1ty4OKWGkgKLnvjSJd30jZdj5Nk8OtnadlNpTdSDs6-rOQZYuLm8lgRVlYzZ-Fc0woTnKAM96PVODaqzgYNmCc5QkgHqvT67UnFzGCoHsUFKcg70k95Q1qKm8qD7rI8s3roPwHZJTgIGSyAeA0k6PMwYRf-xk7v2PKUNdIvPPP3GH-tcdTkz3zQvOUiAdvV8nEeToC5_PuZnqHerpuL2OT34YWgX1T0-Z4ww
+
+******************************************************************************************************************************************************

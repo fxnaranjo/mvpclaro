@@ -79,7 +79,7 @@
 									</header>
 									<p> Obtenga una aplicacion para el manejo de clientes que llevar&aacute; su relaci&oacute;n a otro nivel</p>
 									<footer class="align-center">
-										<a href="#" class="button alt">ACCEDER</a>
+										<a href="javascript:void(0);" onclick="createApp1()" class="button alt">ACCEDER</a>
 									</footer>
 								</div>
 							</div>
@@ -107,6 +107,30 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+					function createApp1(){ 
+					 
+					server_url='http://localhost:3000';	
+						$.ajax({
+								url: server_url + '/crearTomcat',
+								timeout:30000,
+								type: "GET",
+								success : function(msg) {
+								alert(JSON.stringify(msg));
+									if (msg == true)
+									{
+										alert('success!'); 
+									}
+								},
+								error: function(jqXHR, textStatus)
+								{
+								alert('Error Occured'); //MESSAGE
+								}
+							 });
+					};
+						
+			</script>
 
 	</body>
 </html>

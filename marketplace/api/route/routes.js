@@ -4,8 +4,8 @@ module.exports = function(app) {
 
   
 
-  app.route('/fxn')
-    .get(todoList.saludo)  
+  app.route('/crearTomcat')
+    .get(todoList.crearTomcat)  
 
  
 
