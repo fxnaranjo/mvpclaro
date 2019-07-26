@@ -4035,8 +4035,8 @@
 
 		.banner.full {
 			padding: 0;
-			min-height: 100vh;
-			height: 100vh !important;
+			min-height: 70vh;
+			height: 70vh !important;
 		}
 
 		.banner.half {
@@ -4309,4 +4309,9 @@
 				padding: 3rem 0 1rem 0 ;
 			}
 
+		}
+
+
+		.mensajes{
+			color: red
 		}

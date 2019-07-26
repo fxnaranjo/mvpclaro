@@ -79,7 +79,8 @@
 									</header>
 									<p> Obtenga una aplicacion para el manejo de clientes que llevar&aacute; su relaci&oacute;n a otro nivel</p>
 									<footer class="align-center">
-										<a href="javascript:void(0);" onclick="createApp1()" class="button alt">ACCEDER</a>
+										<a href="javascript:void(0);" onclick="createApp1()" class="button alt">ACCEDER</a><br>
+										<span id="mensaje" class="mensajes"></span>
 									</footer>
 								</div>
 							</div>
@@ -117,10 +118,10 @@
 								timeout:30000,
 								type: "GET",
 								success : function(msg) {
-								alert(JSON.stringify(msg));
+								//alert(JSON.stringify(msg));
 									if (msg == true)
 									{
-										alert('success!'); 
+										$("#mensaje").text('Su aplicación esta lista para usarse');
 									}
 								},
 								error: function(jqXHR, textStatus)
